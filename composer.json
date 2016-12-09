@@ -5,7 +5,7 @@
   "require": {},
   "autoload": {
     "psr-4": {
-      "SDK\\": "src/SuiteCRM/",
+      "SuiteCRM\\": "src/SuiteCRM/"
     }
   }
 }
