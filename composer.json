@@ -1,0 +1,11 @@
+{
+  "name": "daniel-samson/suitecrm-rest-client",
+  "type": "library",
+  "license": "AGPL 3.0",
+  "require": {},
+  "autoload": {
+    "psr-4": {
+      "SDK\\": "src/SuiteCRM/",
+    }
+  }
+}
