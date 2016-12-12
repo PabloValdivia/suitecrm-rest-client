@@ -16,27 +16,27 @@ class RestClient
      *
      * @var string
      */
-    private $rest_url = "";
+    private $rest_url = '';
     /**
      * SuiteCRM User
      *
      * @var string
      */
-    private $rest_user = "";
+    private $rest_user = '';
     /**
      * SuiteCRM Pass
      *
      * @var string
      */
-    private $rest_pass = "";
+    private $rest_pass = '';
 
     /**
      * @param string $url Url to SuiteCRM's rest.php
      * @param $user
      * @param $pass
      * @param $host
+     * @param $rest_api
      *
-     * @return boolean
      */
     public function __construct($user, $pass, $host, $rest_api = "/service/v4_1/rest.php")
     {
@@ -48,12 +48,7 @@ class RestClient
 
     /**
      * Login with user credentials
-     *
-     * @param string $user
-     * @param string $password_hash
-     * @param boolean $admin_check
-     *
-     * @return boolean
+     * @return mixed = session_id or false if unsuccessful
      */
     public function login()
     {
@@ -66,7 +61,7 @@ class RestClient
             'login',
             array(
                 'user_auth'        => $login_params,
-                "application_name" => "",
+                "application_name" => '',
                 'name_value_list'  => array(array('name' => 'notifyonsave', 'value' => 'true'))
             )
         );
