@@ -62,7 +62,7 @@ class RestClient
             'password'  => $this->rest_pass,
         );
 
-        $result = $this->rest_request(
+        $result = $this->restRequest(
             'login',
             array(
                 'user_auth'        => $login_params,
@@ -89,7 +89,7 @@ class RestClient
      *
      * @return array
      */
-    private function rest_request($call_name, $call_arguments)
+    private function restRequest($call_name, $call_arguments)
     {
 
         ob_start();
@@ -100,7 +100,7 @@ class RestClient
         $post_data = $post_data . "&rest_data=" . $jsonEncodedData;
 
         curl_setopt($ch, CURLOPT_URL, $this->rest_url);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, true);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
         curl_setopt($ch, CURLOPT_ENCODING, 'gzip');
         curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
@@ -121,7 +121,7 @@ class RestClient
      */
     public function logout()
     {
-        $result = $this->rest_request(
+        $result = $this->restRequest(
             'logout',
             array(
                 'session' => $this->sid,
@@ -158,7 +158,7 @@ class RestClient
             return false;
         }
 
-        $result = $this->rest_request(
+        $result = $this->restRequest(
             'get_entry_list',
             array(
                 'session'                   => $this->sid,
@@ -186,7 +186,7 @@ class RestClient
             return false;
         }
 
-        $result = $this->rest_request(
+        $result = $this->restRequest(
             'get_entry',
             array(
                 'session'                   => $this->sid,
@@ -218,7 +218,7 @@ class RestClient
             return false;
         }
 
-        $result = $this->rest_request(
+        $result = $this->restRequest(
             'set_entry',
             array(
                 'session'         => $this->sid,
@@ -254,7 +254,7 @@ class RestClient
             '$related_ids'    => array($module2_id),
         );
 
-        $result = $this->rest_request('set_relationship', $data);
+        $result = $this->restRequest('set_relationship', $data);
 
         return $result;
     }
@@ -280,7 +280,7 @@ class RestClient
         $offset = 0,
         $limit = false
     ) {
-        $result = $this->rest_request(
+        $result = $this->restRequest(
             'get_relationships',
             array(
                 'session'                                  => $this->sid,
@@ -318,7 +318,7 @@ class RestClient
             return false;
         }
 
-        $result = $this->rest_request(
+        $result = $this->restRequest(
             'get_module_fields',
             array(
                 'session'     => $this->sid,
@@ -340,7 +340,7 @@ class RestClient
             return false;
         }
 
-        $result = $this->rest_request(
+        $result = $this->restRequest(
             'get_module_fields',
             array(
                 'session'     => $this->sid,
@@ -356,7 +356,7 @@ class RestClient
         }
     }
 
-    public function get_note_attachment($note_id)
+    public function getNoteAttachment($note_id)
     {
         if (!$this->sid) {
             return false;
@@ -367,7 +367,7 @@ class RestClient
             'id'      => $note_id
         );
 
-        $result = $this->rest_request(
+        $result = $this->restRequest(
             'get_note_attachment',
             $call_arguments
         );
