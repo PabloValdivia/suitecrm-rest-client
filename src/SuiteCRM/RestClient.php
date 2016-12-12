@@ -38,12 +38,12 @@ class RestClient
      *
      * @return boolean
      */
-    public function __construct($user, $pass, $host)
+    public function __construct($user, $pass, $host, $rest_api = "/service/v4_1/rest.php")
     {
         $this->rest_user = $user;
         $this->rest_pass = $pass;
         $this->base_url = 'http://' . preg_replace('~^http://~', '', $host);
-        $this->rest_url = $host . "/service/v4_1/rest.php";
+        $this->rest_url = $host . $rest_api;
     }
 
     /**
