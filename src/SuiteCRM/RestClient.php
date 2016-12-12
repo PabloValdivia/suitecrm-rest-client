@@ -69,7 +69,7 @@ class RestClient
         if (isset($result['id'])) {
             $this->sid = $result['id'];
 
-            return $result['id'];
+            return $this->sid;
         } else {
             if (isset($result['name'])) {
                 return false;
