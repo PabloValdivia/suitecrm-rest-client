@@ -2,7 +2,7 @@
 SuiteCRM Rest API Client
 
 Install using composer:
-<pre>compsoser require daniel-samson/suitecrm-rest-client</pre>
+<pre>composer require daniel-samson/suitecrm-rest-client</pre>
 
 Example:
 <pre>
